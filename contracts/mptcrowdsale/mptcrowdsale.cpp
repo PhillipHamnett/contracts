@@ -122,7 +122,10 @@ class [[eosio::contract]] mptcrowdsale : public contract {
             data = unpack_action_data<transfer_t>();                     
             if (data.from != get_self() && data.to == get_self()) 
             {                
+              if(data.from != "eosio.stake"_n)
+              {
                 buytokens(data.from, data.quantity);
+              }
             }
         }
 
